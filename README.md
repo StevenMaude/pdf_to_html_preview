@@ -18,8 +18,7 @@ locally. [Mostly.](http://www.youtube.com/watch?v=wKdocYeSqTA)
 ## Licence?
 
 I'm hoping the original author, Julian Todd, doesn't mind me doing this.
-There was no obvious licence attached to the [original code](https://classic.scraperwiki.com/views/pdf-to-html-preview-1/)
-.
+There was no obvious licence attached to the [original code](https://classic.scraperwiki.com/views/pdf-to-html-preview-1/).
 
 ## Install
 

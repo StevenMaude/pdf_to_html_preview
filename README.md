@@ -31,6 +31,9 @@ remind me to try to fix this.)
 
     pdf_to_html.py http://link.to.pdf > some_output.html
 
-Then open some_output in a browser. The **download button in this HTML
-doesn't work**; you can't use the generated page to then download
-another PDF.
+Then open `some_output.html` in a browser. The **download button in
+this HTML doesn't work**; you can't use the generated page to then
+download another PDF.
+
+Instead, run the script again with new input PDF and new output
+filename.

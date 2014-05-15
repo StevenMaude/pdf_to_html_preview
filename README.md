@@ -20,6 +20,8 @@ locally. [Mostly.](http://www.youtube.com/watch?v=wKdocYeSqTA)
 I'm hoping the original author, Julian Todd, doesn't mind me doing this.
 There was no obvious licence attached to the [original code](https://classic.scraperwiki.com/views/pdf-to-html-preview-1/).
 
+I'm assuming it's in the public domain.
+
 ## Install
 
 Install requirements using `pip install -r requirements.txt`

@@ -100,6 +100,7 @@ def Main(pdfurl, hidden):
     print '</form>'
     ttx = re.sub('<', '&lt;', pdfxml)
     ttx = re.sub('\n', '\r\n', ttx) 
+    # Does this truncate in case of large PDF?
     print '<textarea class="pdfprev">%s</textarea>' % ttx[:5000]
     print '</div>'
 

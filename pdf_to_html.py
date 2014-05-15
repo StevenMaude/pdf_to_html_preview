@@ -44,7 +44,10 @@ def Main(pdfurl, hidden):
     options = ''
     if hidden == 1:
         options='-hidden' # 
-    pdfxml = scraperwiki.pdftoxml(pdfdata, options)
+    # TODO: readd this if implemented in scraperwiki-python
+    # see https://github.com/scraperwiki/scraperwiki-python/issues/48
+    # pdfxml = scraperwiki.pdftoxml(pdfdata, options)
+    pdfxml = scraperwiki.pdftoxml(pdfdata)
     try:
         root = lxml.etree.fromstring(pdfxml)
     except lxml.etree.XMLSyntaxError, e:

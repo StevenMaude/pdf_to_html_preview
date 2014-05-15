@@ -7,7 +7,8 @@ and threw it onto GitHub with very small changes.
 
 [Info link](https://blog.scraperwiki.com/2010/12/scraping-pdfs-now-26-less-unpleasant-with-scraperwiki/)
 
-Original code at this commit: f4ed75b005efd5c8716e6784634d740571ad774c
+Original code at this commit:
+[f4ed75b005efd5c8716e6784634d740571ad774c](https://github.com/StevenMaude/pdf_to_html_preview/blob/f4ed75b005efd5c8716e6784634d740571ad774c/pdf_to_html.py)
 
 Since ScraperWiki Classic was deprecated, this tool was no longer
 available.

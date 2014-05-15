@@ -1,5 +1,6 @@
 #forked from: Julian_Todd / PDF to HTML (https://scraperwiki.com/views/pdf-to-html-preview-1/)
 #input url goes to line
+import sys
 import scraperwiki
 import urllib, urllib2, urlparse
 import lxml.etree, lxml.html
@@ -164,16 +165,21 @@ jscript = """
 
     
 # Check for a PDF URL and hidden-checkbox entered by the user: if none, use our default values:
-urlquery = os.getenv('URLQUERY')
+# urlquery = os.getenv('URLQUERY')
 
-pdfurl = "http://soswy.state.wy.us/Elections/Docs/2004/04Results/04General/AL_PbP_Candidate_Summary.pdf"
-hidden = -1
-
-if urlquery:
-     querydata = urlparse.parse_qsl(urlquery);
-     for pair in querydata:
-        if pair[0] == "url":
-            pdfurl = urllib.unquote(pair[1])
-        if pair[0] == "hidden":
-            hidden = 1
-Main(pdfurl, hidden)
+#if urlquery:
+#     querydata = urlparse.parse_qsl(urlquery);
+#     for pair in querydata:
+#        if pair[0] == "url":
+#            pdfurl = urllib.unquote(pair[1])
+#        if pair[0] == "hidden":
+#            hidden = 1
+if __name__ == '__main__':
+    try:
+        pdfurl = sys.argv[1]
+    except IndexError:
+        print "Enter a valid URL. For example:"
+        print "http://soswy.state.wy.us/Elections/Docs/2004/04Results/04General/AL_PbP_Candidate_Summary.pdf"
+        sys.exit(1)
+    hidden = -1
+    Main(pdfurl, hidden)

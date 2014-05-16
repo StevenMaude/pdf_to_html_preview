@@ -25,7 +25,17 @@ I'm assuming it's in the public domain.
 
 ## Install
 
-Install requirements using `pip install -r requirements.txt`
+On Linux, it may well just work if you install requirements using
+`pip install -r requirements.txt`
+
+There may be other dependencies that you need to search how to fix.
+`lxml` can be a stumbling block.
+
+If you get stuck, post errors or fixes as issues and I'll try to figure
+them out and update.
+
+On Windows, it's more problematic. Install guide with version based on the
+initial fixed commits is [here](https://gist.github.com/StevenMaude/88def892b0cbfa8ae818)
 
 ## Usage
 Since this isn't running on ScraperWiki's site, the usage is a little

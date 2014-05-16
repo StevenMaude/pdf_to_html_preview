@@ -35,7 +35,7 @@ If you get stuck, post errors or fixes as issues and I'll try to figure
 them out and update.
 
 On Windows, it's more problematic. Install guide with version based on the
-initial fixed commits is [here](https://gist.github.com/StevenMaude/88def892b0cbfa8ae818)
+initial fixed commits is [here](https://gist.github.com/StevenMaude/88def892b0cbfa8ae818).
 
 ## Usage
 Since this isn't running on ScraperWiki's site, the usage is a little

@@ -8,7 +8,7 @@ import lxml.html
 import re
 
 
-def Pageblock(page, index):
+def pageblock(page, index):
     '''
     Print each page of the PDF in turn, outputting the contents as HTML.
     '''
@@ -42,7 +42,7 @@ def Pageblock(page, index):
     return '\n'.join(result)
 
 
-def Main(pdfurl, hidden):
+def main(pdfurl, hidden):
     '''
     Take the URL of a PDF, and use scraperwiki.pdftoxml and lxml to output the
     contents as a styled HTML div.
@@ -129,7 +129,7 @@ def Main(pdfurl, hidden):
 
     # Print each page of the PDF.
     for index, page in enumerate(root):
-        print Pageblock(page, index)
+        print pageblock(page, index)
 
 
 # Global styles for the divs containing the PDF.
@@ -170,4 +170,4 @@ if __name__ == '__main__':
                "/04General/AL_PbP_Candidate_Summary.pdf")
         sys.exit(1)
     hidden = -1
-    Main(pdfurl, hidden)
+    main(pdfurl, hidden)

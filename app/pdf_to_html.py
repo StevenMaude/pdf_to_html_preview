@@ -73,7 +73,7 @@ def Main(pdfurl, hidden):
     print '    <title>PDF to XML text positioning</title>'
     print '    <style type="text/css" media="screen">%s</style>' % "\n".join([ "%s { %s }" % (k, v)  for k, v in styles.items() ])
     print '    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>'
-    print '    <script>%s</script>' % jscript
+    print '    <script type="text/javascript" src="static/pdf_click_view.js"></script>'
     print '</head>'
 
     print '<div class="info" id="info1">&lt;text block&gt;</div>'
@@ -125,46 +125,6 @@ styles = {
 "div.lineh": "background-color:#fce;",
 }
 
-# Global JavaScript allowing the user to click on an area of the PDF div, and see the 
-# underlying PDF source.
-jscript = """
-    var rfontspec = new RegExp('fontspec-(\\\\w+)');
-
-    $(function()
-    {
-        $('div.text').click(function ()
-        {
-            var top = parseInt($(this).css('top'));
-            var left = parseInt($(this).css('left'));
-            var width = parseInt($(this).css('width'));
-            var height = parseInt($(this).css('height'));
-            var clas = $(this).attr('class');
-            var lfont = rfontspec.exec(clas);
-            var font = (lfont ? lfont[1] : clas);
-
-            $('div#info1').text($(this).html());
-            $('div#info2').text('top='+top + ' bottom='+(top+height)+ ' left='+left + ' right='+(left+width) + ' font='+font);
-            
-            $('div.text').each(function()
-            {
-                var lleft = parseInt($(this).css('left'));
-                if (lleft == left)
-                    $(this).addClass('linev');
-                else
-                    $(this).removeClass('linev');
-
-                var ltop = parseInt($(this).css('top'));
-                if (ltop == top)
-                    $(this).addClass('lineh');
-                else
-                    $(this).removeClass('lineh');
-            });
-        });
-    });
-"""
-
-
-    
 # Check for a PDF URL and hidden-checkbox entered by the user: if none, use our default values:
 # urlquery = os.getenv('URLQUERY')
 

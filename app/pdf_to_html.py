@@ -102,8 +102,6 @@ def main(pdfurl, hidden):
            'text that shares the same column or row.')
     print ('   Useful for discovering what coordinates to use when extracting '
            'rows from tables in a document.</p>')
-    print ('<p>To do: track the coordinates of the mouse and cross reference '
-           'with <a href="/cropper">cropper</a> technology.</p>')
 
     print '<p class="href"><a href="%s">%s</a></p>' % (pdfurl, pdfurl)
     print '<form id="newpdfdoclink">'

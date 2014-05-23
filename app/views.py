@@ -14,7 +14,7 @@ def index():
         try:
             pages_data, fontspecs, pdf_info = pdf_to_html.main(url)
         except requests.exceptions.RequestException:
-            return render_template('error_template.html',
+            return render_template('requests_error_template.html',
                                    url=url)
         return render_template('output_template.html',
                                pages_data=pages_data,

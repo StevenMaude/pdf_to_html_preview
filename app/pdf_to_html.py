@@ -8,7 +8,7 @@ import lxml.html
 import re
 
 
-def pageblock(page, index):
+def pageblock(page):
     '''
     Print a page of the PDF, outputting the contents as HTML.
     '''
@@ -19,8 +19,8 @@ def pageblock(page, index):
     number = page.attrib.get('number')
     assert page.attrib.get('position') == "absolute"
 
-    result.append('<p>Page %s index %d height=%d width=%d</p>'
-                  % (number, index, height, width))
+    result.append('<p>Page %s height=%d width=%d</p>'
+                  % (number, height, width))
     result.append('<div class="page" style="height:%dpx; width:%dpx">'
                   % (height, width))
     for v in page:
@@ -126,8 +126,8 @@ def main(pdfurl, hidden):
     print '<p>There are %d pages</p>' % len(root)
 
     # Print each page of the PDF.
-    for index, page in enumerate(root):
-        print pageblock(page, index)
+    for page in root:
+        print pageblock(page)
 
 
 # Global styles for the divs containing the PDF.

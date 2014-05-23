@@ -10,7 +10,7 @@ import re
 
 def pageblock(page, index):
     '''
-    Print each page of the PDF in turn, outputting the contents as HTML.
+    Print a page of the PDF, outputting the contents as HTML.
     '''
     result = []
     assert page.tag == 'page'

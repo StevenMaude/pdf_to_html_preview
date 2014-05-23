@@ -66,7 +66,7 @@ def main(pdfurl, hidden=-1, cmdline=False):
     '''
     requests_cache.install_cache()
     pdfdata = requests.get(pdfurl).content
-    #pdfdata = urllib2.urlopen(pdfurl).read()
+
     options = ''
     if hidden == 1:
         options = '-hidden'

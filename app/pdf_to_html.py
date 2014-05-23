@@ -114,17 +114,6 @@ def main(pdfurl, hidden=-1, cmdline=False):
         return all_pages_data, fontspecs, pdf_info
 
 
-# Check for a PDF URL and hidden-checkbox entered by the user:
-# if none, use our default values:
-# urlquery = os.getenv('URLQUERY')
-
-#if urlquery:
-#     querydata = urlparse.parse_qsl(urlquery);
-#     for pair in querydata:
-#        if pair[0] == "url":
-#            pdfurl = urllib.unquote(pair[1])
-#        if pair[0] == "hidden":
-#            hidden = 1
 if __name__ == '__main__':
     try:
         pdfurl = sys.argv[1]

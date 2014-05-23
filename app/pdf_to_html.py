@@ -131,13 +131,14 @@ def main(pdfurl, hidden):
     print '<label for="url">PDF link</label>'
     print ('    <input type="text" name="url" id="url" value="%s" '
            'title="paste in url of document">' % pdfurl)
-    if hidden == 1:
-        checked = "checked "
-    else:
-        checked = ""
-    print '<br /><label for="hidden">Force hidden text extraction</label>'
-    print ('    <input type="checkbox" name="hidden" id="hidden"'
-           'value="1" %stitle="force hidden text extraction">' % checked)
+    # Removed hidden option for now
+    #if hidden == 1:
+    #    checked = "checked "
+    #else:
+    #    checked = ""
+    #print '<br /><label for="hidden">Force hidden text extraction</label>'
+    #print ('    <input type="checkbox" name="hidden" id="hidden"'
+    #       'value="1" %stitle="force hidden text extraction">' % checked)
     print '<br />    <input type="submit" value="Go">'
     print '</form>'
     ttx = re.sub('<', '&lt;', pdfxml)

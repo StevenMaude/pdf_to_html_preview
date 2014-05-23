@@ -8,11 +8,21 @@ import lxml.etree
 import lxml.html
 import re
 
+from jinja2 import Environment, PackageLoader
+
+
+def render_template(page_data):
+    """ Render template and print it. """
+    env = Environment(loader=PackageLoader('pdf_to_html', 'templates'))
+    template = env.get_template('pageblock_template.html')
+    return template.render(page_data=page_data)
+
 
 def pageblock(page):
     '''
     Print a page of the PDF, outputting the contents as HTML.
     '''
+    page_data = {}
     result = []
     assert page.tag == 'page'
     page_height = int(page.attrib.get('height'))
@@ -20,10 +30,14 @@ def pageblock(page):
     page_number = page.attrib.get('number')
     assert page.attrib.get('position') == "absolute"
 
+    page_data = {'page_height': page_height, 'page_width': page_width,
+                 'page_number': page_number}
+
     result.append('<p>Page %s height=%d width=%d</p>'
                   % (page_number, page_height, page_width))
     result.append('<div class="page" style="height:%dpx; width:%dpx">'
                   % (page_height, page_width))
+    v_list = []
     for v in page:
         if v.tag == 'fontspec':
             continue
@@ -39,7 +53,11 @@ def pageblock(page):
                  % (top, left, height, width))
         result.append('    <div class="text fontspec-%s" style="%s">%s</div>'
                       % (fontid, style, text))
+        v_list.append({'top': top, 'left': left, 'height': height,
+                       'width': width, 'fontid': fontid, 'style': style,
+                       'text': text})
     result.append('</div>')
+    page_data['v'] = v_list
     return '\n'.join(result)
 
 

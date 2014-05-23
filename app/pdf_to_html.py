@@ -56,7 +56,7 @@ def pageblock(page):
     return page_data
 
 
-def main(pdfurl, hidden):
+def main(pdfurl, hidden=-1, cmdline=False):
     '''
     Take the URL of a PDF, and use scraperwiki.pdftoxml and lxml to output the
     contents as a styled HTML div.
@@ -107,8 +107,11 @@ def main(pdfurl, hidden):
 
     all_pages_data = [pageblock(page) for page in root]
 
-    with open('templated.html', 'w') as f:
-        f.write(render_template(all_pages_data, fontspecs, pdf_info))
+    if cmdline:
+        with open('templated.html', 'w') as f:
+            f.write(render_template(all_pages_data, fontspecs, pdf_info))
+    else:
+        return all_pages_data, fontspecs, pdf_info
 
 
 # Check for a PDF URL and hidden-checkbox entered by the user:
@@ -131,4 +134,4 @@ if __name__ == '__main__':
                "/04General/AL_PbP_Candidate_Summary.pdf")
         sys.exit(1)
     hidden = -1
-    main(pdfurl, hidden)
+    main(pdfurl, hidden, cmdline=True)

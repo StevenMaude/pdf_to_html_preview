@@ -14,7 +14,7 @@ from jinja2 import Environment, PackageLoader
 def render_template(pages_data, fontspecs, pdf_info):
     """ Render template and print it. """
     env = Environment(loader=PackageLoader('pdf_to_html', 'templates'))
-    template = env.get_template('pageblock_template.html')
+    template = env.get_template('output_template.html')
     return template.render(pages_data=pages_data,
                            fontspecs=fontspecs,
                            pdf_info=pdf_info)

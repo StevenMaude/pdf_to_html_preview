@@ -46,6 +46,7 @@ def pageblock(page):
         width = int(v.attrib.get('width'))
         height = int(v.attrib.get('height'))
         fontid = v.attrib.get('font')
+        # TODO: Move this style into template, no need for it here.
         style = ('top:%dpx; left:%dpx; height:%dpx; width:%dpx'
                  % (top, left, height, width))
         v_list.append({'top': top, 'left': left, 'height': height,

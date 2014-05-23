@@ -2,7 +2,8 @@
 #(https://scraperwiki.com/views/pdf-to-html-preview-1/)
 import sys
 import scraperwiki
-import urllib2
+import requests
+import requests_cache
 import lxml.etree
 import lxml.html
 import re
@@ -47,7 +48,9 @@ def main(pdfurl, hidden):
     Take the URL of a PDF, and use scraperwiki.pdftoxml and lxml to output the
     contents as a styled HTML div.
     '''
-    pdfdata = urllib2.urlopen(pdfurl).read()
+    requests_cache.install_cache()
+    pdfdata = requests.get(pdfurl).content
+    #pdfdata = urllib2.urlopen(pdfurl).read()
     options = ''
     if hidden == 1:
         options = '-hidden'

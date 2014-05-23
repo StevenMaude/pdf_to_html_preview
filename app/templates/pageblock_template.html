@@ -1,0 +1,16 @@
+<html>
+  <head>
+  </head>
+  <body>
+    {%- for page in pages_data %}
+    {#- Page details #}
+    <p>Page {{ page['page_number'] }} height={{ page['page_height'] }} width={{ page['page_width'] }}</p>
+    <div class="page" style="height:{{ page['page_height'] }}px; width:{{ page['page_width'] }}px">
+    {#- Data from XML for page #}
+      {%- for v in page['v'] %}
+    <div class="text fontspec-{{ v['fontid'] }}" style="{{ v['style'] }}">{{ v['text'] }}</div>
+      {%- endfor %}
+    {%- endfor %}
+    </div>
+  </body>
+</html>

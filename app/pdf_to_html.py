@@ -15,15 +15,15 @@ def pageblock(page):
     '''
     result = []
     assert page.tag == 'page'
-    height = int(page.attrib.get('height'))
-    width = int(page.attrib.get('width'))
-    number = page.attrib.get('number')
+    page_height = int(page.attrib.get('height'))
+    page_width = int(page.attrib.get('width'))
+    page_number = page.attrib.get('number')
     assert page.attrib.get('position') == "absolute"
 
     result.append('<p>Page %s height=%d width=%d</p>'
-                  % (number, height, width))
+                  % (page_number, page_height, page_width))
     result.append('<div class="page" style="height:%dpx; width:%dpx">'
-                  % (height, width))
+                  % (page_height, page_width))
     for v in page:
         if v.tag == 'fontspec':
             continue

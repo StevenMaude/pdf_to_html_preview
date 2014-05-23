@@ -11,11 +11,13 @@ import re
 from jinja2 import Environment, PackageLoader
 
 
-def render_template(pages_data):
+def render_template(pages_data, fontspecs, pdf_info):
     """ Render template and print it. """
     env = Environment(loader=PackageLoader('pdf_to_html', 'templates'))
     template = env.get_template('pageblock_template.html')
-    return template.render(pages_data=pages_data)
+    return template.render(pages_data=pages_data,
+                           fontspecs=fontspecs,
+                           pdf_info=pdf_info)
 
 
 def pageblock(page):
@@ -146,6 +148,7 @@ def main(pdfurl, hidden):
 
     print '<p>There are %d pages</p>' % len(root)
 
+    pdf_info = {'pdfurl': pdfurl, 'ttx': ttx[:5000], 'total_pages': len(root)}
     # Print each page of the PDF.
     all_pages_data = []
     for page in root:
@@ -154,7 +157,7 @@ def main(pdfurl, hidden):
         all_pages_data.append(page_data)
 
     with open('templated.html', 'w') as f:
-        f.write(render_template(all_pages_data))
+        f.write(render_template(all_pages_data, fontspecs, pdf_info))
 
 
 # Global styles for the divs containing the PDF.

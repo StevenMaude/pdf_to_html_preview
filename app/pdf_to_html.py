@@ -1,5 +1,8 @@
 #forked from: Julian_Todd / PDF to HTML
 #(https://scraperwiki.com/views/pdf-to-html-preview-1/)
+from __future__ import unicode_literals
+
+import codecs
 import sys
 import scraperwiki
 import requests
@@ -70,9 +73,9 @@ def main(pdfurl, hidden=-1, cmdline=False):
     # TODO: readd this if implemented in scraperwiki-python
     # see https://github.com/scraperwiki/scraperwiki-python/issues/48
     # pdfxml = scraperwiki.pdftoxml(pdfdata, options)
-    pdfxml = scraperwiki.pdftoxml(pdfdata)
+    pdfxml = scraperwiki.pdftoxml(pdfdata).decode('utf-8')
     try:
-        root = lxml.etree.fromstring(pdfxml)
+        root = lxml.etree.fromstring(pdfxml.encode('utf-8'))
     except lxml.etree.XMLSyntaxError, e:
         print str(e), str(type(e)).replace("<", "&lt;")
         print pdfurl
@@ -98,17 +101,14 @@ def main(pdfurl, hidden=-1, cmdline=False):
     #print '<br /><label for="hidden">Force hidden text extraction</label>'
     #print ('    <input type="checkbox" name="hidden" id="hidden"'
     #       'value="1" %stitle="force hidden text extraction">' % checked)
-
     ttx = re.sub('<', '&lt;', pdfxml)
     ttx = re.sub('\n', '\r\n', ttx)
-
     # Does this truncate in case of large PDF?
     pdf_info = {'pdfurl': pdfurl, 'ttx': ttx[:5000], 'total_pages': len(root)}
-
     all_pages_data = [pageblock(page) for page in root]
 
     if cmdline:
-        with open('templated.html', 'w') as f:
+        with codecs.open('templated.html', 'w', encoding='utf8') as f:
             f.write(render_template(all_pages_data, fontspecs, pdf_info))
     else:
         return all_pages_data, fontspecs, pdf_info

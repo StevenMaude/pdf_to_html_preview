@@ -6,7 +6,6 @@ import codecs
 import sys
 import scraperwiki
 import requests
-import requests_cache
 import lxml.etree
 import lxml.html
 import re
@@ -64,7 +63,6 @@ def main(pdfurl, hidden=-1, cmdline=False):
     Take the URL of a PDF, and use scraperwiki.pdftoxml and lxml to output the
     contents as a styled HTML div.
     '''
-    requests_cache.install_cache()
     pdfdata = requests.get(pdfurl).content
 
     options = ''

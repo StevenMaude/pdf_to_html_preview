@@ -108,7 +108,7 @@ def main(pdfurl, hidden=-1, cmdline=False):
     all_pages_data = [pageblock(page) for page in root]
 
     if cmdline:
-        with codecs.open('templated.html', 'w', encoding='utf8') as f:
+        with codecs.open('output.html', 'w', encoding='utf8') as f:
             f.write(render_template(all_pages_data, fontspecs, pdf_info))
     else:
         return all_pages_data, fontspecs, pdf_info

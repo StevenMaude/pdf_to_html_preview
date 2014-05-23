@@ -15,6 +15,9 @@
     div.linev { background-color:#fcc; }
     div.lineh { background-color:#fce; }
     {# add other CSS styles #}
+    {% for id, fontdesc in fontspecs.items() %}
+    div.fontspec-{{ id }} { color:{{ fontdesc['color'] }};font-family:{{ fontdesc['family'] }};font-size:{{ fontdesc['size'] }} }
+    {% endfor %}
     </style>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>

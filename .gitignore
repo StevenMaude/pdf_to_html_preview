@@ -4,4 +4,4 @@ lib/
 local/
 *.pyc
 *.sqlite
-*.html
+app/output.html

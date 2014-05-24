@@ -1,9 +1,21 @@
 # PDF to HTML Preview
+Helps you scrape PDFs with scraperwiki.pdftoxml() by giving you a HTML
+preview that shows where content is located on the page. It highlights
+text in the same column or row if you click on text in the displayed
+page layouts.
 
 ## This is mostly not my code. [Mostly.](http://www.youtube.com/watch?v=wKdocYeSqTA)
 
 I've grabbed it from a copy on [ScraperWiki Classic](https://classic.scraperwiki.com/editor/raw/pdf-to-html-preview-1)
-and threw it onto GitHub with very small changes.
+and threw it onto GitHub.
+
+That was the case when I first made this repo. Since then, I tidied up
+the code slightly, pulled out the JS into a separate file, used Jinja
+templates to generate the HTML, and made it both a command line utility
+and Flask app. Whew!
+
+I've also used it to [scrape a PDF](http://stackoverflow.com/a/23835697/1678416).
+It's useful!
 
 [Info link](https://blog.scraperwiki.com/2010/12/scraping-pdfs-now-26-less-unpleasant-with-scraperwiki/)
 
@@ -38,15 +50,22 @@ On Windows, it's more problematic. Install guide with version based on the
 initial fixed commits is [here](https://gist.github.com/StevenMaude/88def892b0cbfa8ae818).
 
 ## Usage
-Since this isn't running on ScraperWiki's site, the usage is a little
-unconventional. (Comment on the issues if you find this useful and want to
-remind me to try to fix this.)
+### Command line
+Run as:
 
-    pdf_to_html.py http://link.to.pdf > some_output.html
+    pdf_to_html.py http://link.to.pdf
 
-Then open `some_output.html` in a browser. The **download button in
-this HTML doesn't work**; you can't use the generated page to then
-download another PDF.
+It will create a HTML file: `output.html`. View it in a browser. The
+**download button in this HTML doesn't work**; you can't use the
+generated page to then download another PDF.
 
 Instead, run the script again with new input PDF and new output
 filename.
+
+### Flask
+Run local_run.py - this is fine for local use only.
+
+Visit http://127.0.0.1:5000 in your browser. The download form works
+here.
+
+**Do not use Flask's debug server in production.**

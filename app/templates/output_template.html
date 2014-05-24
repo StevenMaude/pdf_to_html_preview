@@ -49,7 +49,7 @@
     <div class="page" style="height:{{ page['page_height'] }}px; width:{{ page['page_width'] }}px">
     {#- Data from XML for page #}
       {%- for v in page['v'] %}
-    <div class="text fontspec-{{ v['fontid'] }}" style="{{ v['style'] }}">{{ v['text']|safe }}</div>
+    <div class="text fontspec-{{ v['fontid'] }}" style="top:{{ v['top'] }}px; left:{{ v['left'] }}px; height:{{ v['height'] }}px; width:{{ v['width'] }}px">{{ v['text']|safe }}</div>
       {%- endfor %}
     </div>
     {%- endfor %}

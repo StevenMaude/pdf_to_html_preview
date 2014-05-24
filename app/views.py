@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # encoding: utf-8
 from app import app
-
 from flask import render_template, request
 import requests
 import pdf_to_html
@@ -9,6 +8,7 @@ import pdf_to_html
 
 @app.route('/')
 def index():
+    """ Basic web app for PDF to HTML Preview. """
     url = request.args.get('url')
     if url:
         try:

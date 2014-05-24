@@ -65,7 +65,6 @@ def main(pdfurl, hidden=-1, cmdline=False):
     '''
     pdfdata = requests.get(pdfurl).content
 
-    options = ''
     if hidden == 1:
         options = '-hidden'
     # TODO: readd this if implemented in scraperwiki-python
